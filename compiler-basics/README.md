@@ -10,3 +10,7 @@
 #### Source Maps
 
 - `compilerOptions.sourceMap: true` acts as a bridge to see and debug the original typescript source which the browser understands. Can place breakpoints
+
+#### rootDir and outDir
+
+Typically `rootDir` is set to `./src` and `outDir` is set to `./dist`.  Folder structure also maintained.
