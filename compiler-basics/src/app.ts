@@ -8,17 +8,17 @@ function add(n1: number, n2: number) {
     return n1 + n2;
   }
 
-  // return;
+  return;
 }
 
-function clickHandler(message: string, age: number) {
-  let userName = "Max";
+function clickHandler(message: string) {
+  // let userName = "Max";
   console.log("Clicked! " + message);
 }
 
 if (button) {
   button.addEventListener(
     "click",
-    clickHandler.bind(null, "You're welcome", 32)
+    clickHandler.bind(null, "You're welcome")
   );
 }
