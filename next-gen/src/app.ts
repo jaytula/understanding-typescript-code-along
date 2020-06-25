@@ -1,8 +1,8 @@
-const userName = "Max";
+// const userName = "Max";
 // userName = 'Maximilian';
-let age = 30;
+// let age = 30;
 
-age = 29;
+// age = 29;
 
 // function add(a: number, b: number) {
 //   let result;
@@ -38,7 +38,7 @@ const activeHobbies = ["Hiking", ...hobbies];
 activeHobbies.push(...activeHobbies);
 
 const person = {
-  name: "Max",
+  firstName: "Max",
   age: 30,
 };
 
@@ -55,3 +55,11 @@ console.log(addResult);
 
 const addResult2 = addThreeNums(3, 4, 5);
 console.log(addResult2);
+
+// Array destructuring
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
+
+// Object destructuring
+const {firstName: userName, age} = person;
+
+console.log(userName, age);
