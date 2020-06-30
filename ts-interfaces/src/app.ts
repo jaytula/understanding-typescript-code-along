@@ -6,6 +6,16 @@ interface Greetable extends Named {
   greet(phrase: string): void;
 }
 
+// type AddFn = (a: number, b: number) => number;
+
+interface AddFn {
+  (a: number, b: number): number;
+}
+
+let add: AddFn;
+
+add = (a: number, b: number) => a+b;
+
 class Person implements Greetable {
   name: string;
   age: number = 30;
