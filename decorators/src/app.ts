@@ -1,14 +1,16 @@
-function Logger(constructor: Function) {
-  console.log('Logging...');
-  console.log(constructor);
+function Logger(logString: string) {
+  return function (constructor: Function) {
+    console.log(logString);
+    console.log(constructor);
+  };
 }
 
-@Logger
+@Logger('LOGGING - PERSON')
 class Person {
-  name = 'Max';
+  name = "Max";
 
   constructor() {
-    console.log('Creating person object...');
+    console.log("Creating person object...");
   }
 }
 
