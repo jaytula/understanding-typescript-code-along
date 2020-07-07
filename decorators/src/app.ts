@@ -79,3 +79,8 @@ class Product {
     return this._price * (1 + tax);
   }
 }
+
+// Decorators are run when class is defined
+
+const p1 = new Product('Book 1', 19);
+const p2 = new Product('Book 2', 29);
