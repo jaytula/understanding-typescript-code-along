@@ -135,7 +135,7 @@ class ProjectList {
     this.element.id = `${this.typeName}-projects`;
 
     projectState.addListener((projects: Project[]) => {
-      this.assignedProjects = projects;
+      this.assignedProjects = projects.filter(p => p.status === this.type)
       this.renderProjects();
     });
     this.attach();
@@ -146,6 +146,7 @@ class ProjectList {
     const listEl = document.getElementById(
       `${this.typeName}-projects-list`
     )! as HTMLUListElement;
+    listEl.innerHTML = '';
     for (const prjItem of this.assignedProjects) {
       const listItem = document.createElement("li");
       listItem.textContent = prjItem.title;
