@@ -1,3 +1,3 @@
-const headerOneElem = document.querySelector('h1')!;
+import _ from "lodash";
 
-headerOneElem.textContent = 'Boooyah!';
+console.log(_.shuffle([1, 2, 3, 4, 5]));
