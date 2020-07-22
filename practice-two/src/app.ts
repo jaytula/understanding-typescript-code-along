@@ -1,5 +1,14 @@
 import axios from "axios";
 
+const googleMapsScript = document.createElement("script") as HTMLScriptElement;
+googleMapsScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.APIKEY}`;
+googleMapsScript.defer = true;
+googleMapsScript.async = true;
+
+// declare var google: any;
+
+document.head.appendChild(googleMapsScript);
+
 const GEOCODE_ENDPOINT = "https://maps.googleapis.com/maps/api/geocode/json";
 
 const form = document.querySelector("form")! as HTMLFormElement;
@@ -7,7 +16,7 @@ const addressInput = document.getElementById("address")! as HTMLInputElement;
 
 type GoogleGeocodingResponse = {
   results: { geometry: { location: { lat: number; lng: number } } }[];
-  status: 'OK' | 'ZERO_RESULTS';
+  status: "OK" | "ZERO_RESULTS";
 };
 const searchAddressHandler = (event: Event) => {
   event.preventDefault();
@@ -23,11 +32,16 @@ const searchAddressHandler = (event: Event) => {
       },
     })
     .then(res => {
-      if(res.data.status !== 'OK') {
-        throw new Error('Could not fetch location!');
+      if (res.data.status !== "OK") {
+        throw new Error("Could not fetch location!");
       }
       const coordinates = res.data.results[0].geometry.location;
-      console.log(coordinates);
+      const map = new google.maps.Map(document.getElementById("map")!, {
+        center: coordinates,
+        zoom: 8,
+      });
+       new google.maps.Marker({position: coordinates, map: map});
+
     })
     .catch(err => {
       alert(err.message);
